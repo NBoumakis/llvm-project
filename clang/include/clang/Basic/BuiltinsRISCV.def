@@ -89,5 +89,30 @@ TARGET_BUILTIN(__builtin_riscv_sm3p1, "UiUi", "nc", "zksh")
 TARGET_BUILTIN(__builtin_riscv_ntl_load, "v.", "t", "experimental-zihintntl")
 TARGET_BUILTIN(__builtin_riscv_ntl_store, "v.", "t", "experimental-zihintntl")
 
+// XTHeadCMO extension
+TARGET_BUILTIN(__builtin_riscv_thdcache_call, "v", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_ciall, "v", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_iall, "v", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_cpa, "vv*", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_cipa, "vv*", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_ipa, "vv*", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_cva, "vv*", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_civa, "vv*", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_iva, "vv*", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_csw, "vWi", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_cisw, "vWi", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_isw, "vWi", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_cpal1, "vv*", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thdcache_cval1, "vv*", "nc", "")
+
+TARGET_BUILTIN(__builtin_riscv_thicache_iall, "v", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thicache_ialls, "v", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thicache_ipa, "vv*", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thicache_iva, "vv*", "nc", "")
+
+TARGET_BUILTIN(__builtin_riscv_thl2cache_call, "v", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thl2cache_ciall, "v", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thl2cache_iall, "v", "nc", "")
+
 #undef BUILTIN
 #undef TARGET_BUILTIN

@@ -20407,6 +20407,129 @@ Value *CodeGenFunction::EmitRISCVBuiltinExpr(unsigned BuiltinID,
     return Store;
   }
 
+  // Builtins without arguments
+  case RISCV::BI__builtin_riscv_thdcache_call:
+  case RISCV::BI__builtin_riscv_thdcache_ciall:
+  case RISCV::BI__builtin_riscv_thdcache_iall:
+  case RISCV::BI__builtin_riscv_thicache_iall:
+  case RISCV::BI__builtin_riscv_thicache_ialls:
+  case RISCV::BI__builtin_riscv_thl2cache_call:
+  case RISCV::BI__builtin_riscv_thl2cache_ciall:
+  case RISCV::BI__builtin_riscv_thl2cache_iall: {
+    switch (BuiltinID) {
+    case RISCV::BI__builtin_riscv_thdcache_call: {
+      ID = Intrinsic::riscv_thdcache_call;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_ciall: {
+      ID = Intrinsic::riscv_thdcache_ciall;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_iall: {
+      ID = Intrinsic::riscv_thdcache_iall;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thicache_iall: {
+      ID = Intrinsic::riscv_thicache_iall;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thicache_ialls: {
+      ID = Intrinsic::riscv_thicache_ialls;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thl2cache_call: {
+      ID = Intrinsic::riscv_thl2cache_call;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thl2cache_ciall: {
+      ID = Intrinsic::riscv_thl2cache_ciall;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thl2cache_iall: {
+      ID = Intrinsic::riscv_thl2cache_call;
+      break;
+    }
+    }
+    break;
+  }
+
+  // Builtins with a single argument
+  case RISCV::BI__builtin_riscv_thdcache_cpa:
+  case RISCV::BI__builtin_riscv_thdcache_cipa:
+  case RISCV::BI__builtin_riscv_thdcache_ipa:
+  case RISCV::BI__builtin_riscv_thdcache_cva:
+  case RISCV::BI__builtin_riscv_thdcache_civa:
+  case RISCV::BI__builtin_riscv_thdcache_iva:
+  case RISCV::BI__builtin_riscv_thdcache_cpal1:
+  case RISCV::BI__builtin_riscv_thdcache_cval1:
+  case RISCV::BI__builtin_riscv_thicache_ipa:
+  case RISCV::BI__builtin_riscv_thicache_iva: {
+    switch (BuiltinID) {
+    case RISCV::BI__builtin_riscv_thdcache_cpa: {
+      ID = Intrinsic::riscv_thdcache_cpa;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_cipa: {
+      ID = Intrinsic::riscv_thdcache_cipa;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_ipa: {
+      ID = Intrinsic::riscv_thdcache_ipa;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_cva: {
+      ID = Intrinsic::riscv_thdcache_cva;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_civa: {
+      ID = Intrinsic::riscv_thdcache_civa;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_iva: {
+      ID = Intrinsic::riscv_thdcache_iva;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_cpal1: {
+      ID = Intrinsic::riscv_thdcache_cpal1;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_cval1: {
+      ID = Intrinsic::riscv_thdcache_cval1;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thicache_ipa: {
+      ID = Intrinsic::riscv_thicache_ipa;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thicache_iva: {
+      ID = Intrinsic::riscv_thicache_iva;
+      break;
+    }
+    }
+    IntrinsicTypes.push_back(Ops[0]->getType());
+    break;
+  }
+  case RISCV::BI__builtin_riscv_thdcache_csw:
+  case RISCV::BI__builtin_riscv_thdcache_cisw:
+  case RISCV::BI__builtin_riscv_thdcache_isw: {
+    switch (BuiltinID) {
+    case RISCV::BI__builtin_riscv_thdcache_csw: {
+      ID = Intrinsic::riscv_thdcache_csw;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_cisw: {
+      ID = Intrinsic::riscv_thdcache_cisw;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thdcache_isw: {
+      ID = Intrinsic::riscv_thdcache_isw;
+      break;
+    }
+    }
+    IntrinsicTypes = {};
+    break;
+  }
+
   // Vector builtins are handled from here.
 #include "clang/Basic/riscv_vector_builtin_cg.inc"
   // SiFive Vector builtins are handled from here.
@@ -20414,6 +20537,7 @@ Value *CodeGenFunction::EmitRISCVBuiltinExpr(unsigned BuiltinID,
   }
 
   assert(ID != Intrinsic::not_intrinsic);
+  // assert(!IntrinsicTypes.empty());
 
   llvm::Function *F = CGM.getIntrinsic(ID, IntrinsicTypes);
   return Builder.CreateCall(F, Ops, "");
