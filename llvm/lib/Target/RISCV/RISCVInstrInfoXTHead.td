@@ -725,7 +725,7 @@ let Predicates = [HasVendorXTHeadMemPair] in {
             (TH_SWD GPR:$rd1, GPR:$rd2, GPR:$rs1, uimm2_3:$uimm2_3, 3)>;
 }
 
-let Predicates = [HasVendorXTHeadCmo], DecoderNamespace = "THeadCmo" in {
+let DecoderNamespace = "THeadCmo" in {
 def TH_DCACHE_CSW    : THCacheInst_r<0b00001, "th.dcache.csw">;
 def TH_DCACHE_ISW    : THCacheInst_r<0b00010, "th.dcache.isw">;
 def TH_DCACHE_CISW   : THCacheInst_r<0b00011, "th.dcache.cisw">;
