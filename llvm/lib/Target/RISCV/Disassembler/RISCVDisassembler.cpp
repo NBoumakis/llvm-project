@@ -551,9 +551,8 @@ DecodeStatus RISCVDisassembler::getInstruction(MCInst &MI, uint64_t &Size,
     TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXTHeadMemPair,
                           DecoderTableTHeadMemPair32,
                           "XTHeadMemPair custom opcode table");
-    TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXTHeadSync,
-                          DecoderTableTHeadSync32,
-                          "XTHeadSync custom opcode table");
+    TRY_TO_DECODE(true, DecoderTableTHeadSync32,
+                  "XTHeadSync custom opcode table");
     TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXTHeadVdot, DecoderTableTHeadV32,
                           "XTHeadVdot custom opcode table");
     TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXSfvcp, DecoderTableXSfvcp32,

@@ -750,7 +750,7 @@ def TH_L2CACHE_IALL  : THCacheInst_void<0b10110, "th.l2cache.iall">;
 def TH_L2CACHE_CIALL : THCacheInst_void<0b10111, "th.l2cache.ciall">;
 }
 
-let Predicates = [HasVendorXTHeadSync], DecoderNamespace = "THeadSync" in {
+let DecoderNamespace = "THeadSync" in {
 def TH_SFENCE_VMAS : THCacheInst_rr<0b0000010, "th.sfence.vmas">;
 def TH_SYNC        : THCacheInst_void<0b11000, "th.sync">;
 def TH_SYNC_S      : THCacheInst_void<0b11001, "th.sync.s">;
