@@ -538,7 +538,7 @@ DecodeStatus RISCVDisassembler::getInstruction(MCInst &MI, uint64_t &Size,
     TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXTHeadCondMov,
                           DecoderTableTHeadCondMov32,
                           "XTHeadCondMov custom opcode table");
-    TRY_TO_DECODE(true, DecoderTableTHeadCmo32,
+    TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXTHeadCmo, DecoderTableTHeadCmo32,
                           "XTHeadCmo custom opcode table");
     TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXTHeadFMemIdx,
                           DecoderTableTHeadFMemIdx32,
@@ -551,8 +551,9 @@ DecodeStatus RISCVDisassembler::getInstruction(MCInst &MI, uint64_t &Size,
     TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXTHeadMemPair,
                           DecoderTableTHeadMemPair32,
                           "XTHeadMemPair custom opcode table");
-    TRY_TO_DECODE(true, DecoderTableTHeadSync32,
-                  "XTHeadSync custom opcode table");
+    TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXTHeadSync,
+                          DecoderTableTHeadSync32,
+                          "XTHeadSync custom opcode table");
     TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXTHeadVdot, DecoderTableTHeadV32,
                           "XTHeadVdot custom opcode table");
     TRY_TO_DECODE_FEATURE(RISCV::FeatureVendorXSfvcp, DecoderTableXSfvcp32,
