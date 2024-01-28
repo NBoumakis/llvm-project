@@ -20415,7 +20415,11 @@ Value *CodeGenFunction::EmitRISCVBuiltinExpr(unsigned BuiltinID,
   case RISCV::BI__builtin_riscv_thicache_ialls:
   case RISCV::BI__builtin_riscv_thl2cache_call:
   case RISCV::BI__builtin_riscv_thl2cache_ciall:
-  case RISCV::BI__builtin_riscv_thl2cache_iall: {
+  case RISCV::BI__builtin_riscv_thl2cache_iall:
+  case RISCV::BI__builtin_riscv_thsync:
+  case RISCV::BI__builtin_riscv_thsync_s:
+  case RISCV::BI__builtin_riscv_thsync_i:
+  case RISCV::BI__builtin_riscv_thsync_is: {
     switch (BuiltinID) {
     case RISCV::BI__builtin_riscv_thdcache_call: {
       ID = Intrinsic::riscv_thdcache_call;
@@ -20447,6 +20451,22 @@ Value *CodeGenFunction::EmitRISCVBuiltinExpr(unsigned BuiltinID,
     }
     case RISCV::BI__builtin_riscv_thl2cache_iall: {
       ID = Intrinsic::riscv_thl2cache_call;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thsync: {
+      ID = Intrinsic::riscv_thsync;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thsync_s: {
+      ID = Intrinsic::riscv_thsync_s;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thsync_i: {
+      ID = Intrinsic::riscv_thsync_i;
+      break;
+    }
+    case RISCV::BI__builtin_riscv_thsync_is: {
+      ID = Intrinsic::riscv_thsync_is;
       break;
     }
     }
@@ -20527,6 +20547,13 @@ Value *CodeGenFunction::EmitRISCVBuiltinExpr(unsigned BuiltinID,
     }
     }
     IntrinsicTypes = {};
+    break;
+  }
+
+  // Builtin with one ptr and one int argument
+  case RISCV::BI__builtin_riscv_thsfence_vmas: {
+    ID = Intrinsic::riscv_thsfence_vmas;
+    IntrinsicTypes = {Ops[0]->getType()};
     break;
   }
 

@@ -114,5 +114,12 @@ TARGET_BUILTIN(__builtin_riscv_thl2cache_call, "v", "nc", "")
 TARGET_BUILTIN(__builtin_riscv_thl2cache_ciall, "v", "nc", "")
 TARGET_BUILTIN(__builtin_riscv_thl2cache_iall, "v", "nc", "")
 
+// XTHeadSync
+TARGET_BUILTIN(__builtin_riscv_thsfence_vmas, "vv*Wi", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thsync, "v", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thsync_s, "v", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thsync_i, "v", "nc", "")
+TARGET_BUILTIN(__builtin_riscv_thsync_is, "v", "nc", "")
+
 #undef BUILTIN
 #undef TARGET_BUILTIN

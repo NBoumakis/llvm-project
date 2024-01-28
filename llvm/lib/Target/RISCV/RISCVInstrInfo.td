@@ -1994,3 +1994,9 @@ def : Pat<(int_riscv_thicache_iva GPR:$a), (TH_ICACHE_IVA $a)>;
 def : Pat<(int_riscv_thl2cache_call), (TH_L2CACHE_CALL)>;
 def : Pat<(int_riscv_thl2cache_ciall), (TH_L2CACHE_CIALL)>;
 def : Pat<(int_riscv_thl2cache_iall), (TH_L2CACHE_IALL)>;
+
+def : Pat<(int_riscv_thsfence_vmas GPR:$a, GPR:$b), (TH_SFENCE_VMAS GPR:$a, GPR:$b)>;
+def : Pat<(int_riscv_thsync), (TH_SYNC)>;
+def : Pat<(int_riscv_thsync_s), (TH_SYNC_S)>;
+def : Pat<(int_riscv_thsync_i), (TH_SYNC_I)>;
+def : Pat<(int_riscv_thsync_is), (TH_SYNC_IS)>;

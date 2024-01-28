@@ -1846,6 +1846,7 @@ let TargetPrefix = "riscv" in {
     class THeadNoOperands : DefaultAttrsIntrinsic<[], [], [IntrHasSideEffects, IntrNoMem]>;
     class THeadPtrOperand : DefaultAttrsIntrinsic<[], [llvm_anyptr_ty], [IntrHasSideEffects, IntrNoMem]>;
     class THeadScalarOperand : DefaultAttrsIntrinsic<[], [llvm_i64_ty], [IntrHasSideEffects, IntrNoMem]>;
+    class THeadPtrScalarOperand : DefaultAttrsIntrinsic<[], [llvm_anyptr_ty, llvm_i64_ty], [IntrHasSideEffects, IntrNoMem]>;
 
     def int_riscv_thdcache_call : THeadNoOperands;
     def int_riscv_thdcache_ciall : THeadNoOperands;
@@ -1870,4 +1871,10 @@ let TargetPrefix = "riscv" in {
     def int_riscv_thl2cache_call : THeadNoOperands;
     def int_riscv_thl2cache_ciall : THeadNoOperands;
     def int_riscv_thl2cache_iall : THeadNoOperands;
+
+    def int_riscv_thsfence_vmas : THeadPtrScalarOperand;
+    def int_riscv_thsync : THeadNoOperands;
+    def int_riscv_thsync_s : THeadNoOperands;
+    def int_riscv_thsync_i : THeadNoOperands;
+    def int_riscv_thsync_is : THeadNoOperands;
 }
